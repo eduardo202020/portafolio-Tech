@@ -3,57 +3,85 @@
     "data": [
       {
         "id": 1,
-        "title": "Messenger clone",
-        "content": "Un clone de messenger utilizando imagenes, chats en tiempo real y otras caracteristicas",
-        "imgurl": "/projectSS/messenger-2.png",
-        "githubLink": "https://github.com/eduardo202020/messenger-clone",
-        "deployedLink": "https://messenger-clone-neon-rho.vercel.app/",
+        "title": "Blockchain UNI",
+        "content": "Aplicacion web para credenciales verificables y gestion de constancias digitales, con flujo de emision, verificacion y administracion inspirado en blockchain para entornos academicos.",
+        "imgurl": "/extraImages/blockchain.png",
+        "githubLink": "https://github.com/eduardo202020/tech-blockchain",
+        "deployedLink": "https://blockchain-frontend-orpin.vercel.app/",
         "tech": [
           {
-            "id": 11,
-            "tech": "/skillsLogos/html.png"
-          },
-          {
-            "id": 12,
-            "tech": "/skillsLogos/css.png"
-          },
-          {
-            "id": 13,
-            "tech": "/skillsLogos/next-js.png"
-          },
-          {
-            "id": 14,
+            "id": 1,
             "tech": "/skillsLogos/react.png"
           },
           {
-            "id": 15,
+            "id": 2,
+            "tech": "/skillsLogos/next-js.png"
+          },
+          {
+            "id": 3,
             "tech": "/skillsLogos/typescript.png"
+          },
+          {
+            "id": 4,
+            "tech": "/skillsLogos/github.png"
           }
         ]
       },
       {
         "id": 2,
-        "title": "Spotify Clone",
-        "content": "Una aplicacion tipo Spotify donde subes y escuchas música.",
-        "imgurl": "/projectSS/spotify.png",
-        "githubLink": "https://github.com/eduardo202020/spotify-clone-v2",
-        "deployedLink": "https://spotify-clone-v2-amber.vercel.app/",
+        "title": "Tech Labs",
+        "content": "Plataforma web de gestion tecnologica para inventario, prestamos de equipos y seguimiento operativo. Construida end-to-end con autenticacion por roles, backend integrado y despliegue productivo.",
+        "imgurl": "/extraImages/tech-lab.png",
+        "githubLink": "https://github.com/eduardo202020/tech-lab",
+        "deployedLink": "https://oti-test.jorgeparishuana.dev/",
         "tech": [
           {
-            "tech": "/skillsLogos/html.png"
+            "id": 11,
+            "tech": "/skillsLogos/next-js.png"
           },
           {
-            "tech": "/skillsLogos/css.png"
+            "id": 12,
+            "tech": "/skillsLogos/react.png"
+          },
+          {
+            "id": 13,
+            "tech": "/skillsLogos/typescript.png"
+          },
+          {
+            "id": 14,
+            "tech": "/skillsLogos/tailwind.png"
           }
         ]
       },
       {
         "id": 3,
-        "title": "MiChamba",
-        "content": "Una app para publicar y buscar empleos...",
-        "imgurl": "/projectSS/michamba.png",
-        "githubLink": "https://github.com/eduardo202020/airbnb-clone",
-        "deployedLink": "https://hotel-booking-xi-bice.vercel.app/",
+        "title": "Guante Traductor de Lengua de Señas",
+        "content": "Proyecto de tesis basado en sensores flex, ESP32, BLE y una app mobile en React Native para traducir lengua de señas a texto y voz en tiempo real.",
+        "imgurl": "/extraImages/guante.png",
+        "githubLink": "https://github.com/eduardo202020/IOT-Guante",
+        "deployedLink": "https://github.com/eduardo202020",
+        "tech": [
+          {
+            "tech": "/skillsLogos/react.png"
+          },
+          {
+            "tech": "/skillsLogos/python.png"
+          },
+          {
+            "tech": "/skillsLogos/js.png"
+          },
+          {
+            "tech": "/skillsLogos/linux.png"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "title": "El Gran Chef",
+        "content": "Aplicacion mobile inspirada en el programa peruano El Gran Chef, con cerca de 400 recetas, navegacion por temporadas, filtros por dificultad y detalle paso a paso para cocinar desde el celular.",
+        "imgurl": "/extraImages/chef-1.jpg",
+        "githubLink": "https://github.com/eduardo202020/food_app_v2.git",
+        "deployedLink": "https://www.youtube.com/shorts/xFym0y1Ne6s",
         "tech": [
           {
             "tech": "/skillsLogos/html.png"
@@ -62,13 +90,35 @@
             "tech": "/skillsLogos/css.png"
           },
           {
+            "tech": "/skillsLogos/js.png"
+          },
+          {
+            "tech": "/skillsLogos/react.png"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "title": "MuseIQ",
+        "content": "Sistema mobile + IoT para escaneo BLE en tiempo real, estimacion de proximidad por RSSI y visualizacion interactiva por zonas. Incluye guia hablada y ajuste de parametros para mejorar estabilidad.",
+        "imgurl": "/extraImages/museIQ.png",
+        "githubLink": "https://github.com/eduardo202020/iot",
+        "deployedLink": "https://github.com/eduardo202020/iot",
+        "tech": [
+          {
+            "tech": "/skillsLogos/python.png"
+          },
+          {
             "tech": "/skillsLogos/react.png"
           },
           {
-            "tech": "/skillsLogos/next-js.png"
+            "tech": "/skillsLogos/js.png"
           },
           {
-            "tech": "/skillsLogos/typescript.png"
+            "tech": "/skillsLogos/github.png"
+          },
+          {
+            "tech": "/skillsLogos/linux.png"
           }
         ]
       }
