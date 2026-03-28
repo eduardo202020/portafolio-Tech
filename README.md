@@ -1,90 +1,84 @@
-# Portfolio - Nikhil Kadam
+# Portafolio Eduardo Guevara
 
-This is a portfolio website built with Next.js, Tailwind CSS, and Framer Motion.
+Portafolio personal construido con Next.js, Tailwind CSS y Framer Motion.
 
-## Technologies Used
+El sitio fue rediseñado con una direccion visual mas editorial y experimental, inspirado en interfaces tipo dossier/case file. Incluye:
 
-- [Next.js](https://nextjs.org/) -  A React-based web framework for building server-side rendering and static websites.
-- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
-- [Framer Motion](https://www.framer.com/motion/) - A production-ready animation library for React that makes it easy to create fluid and interactive UIs.
+- hero interactivo con iluminacion por cursor
+- `Evidence Board` con tarjetas de proyectos expandibles y sonido hover
+- proyectos reales de web, blockchain, mobile e IoT
+- integracion de CV, identidad visual propia y recursos graficos personalizados
 
-## Installation
+## Stack
 
-1. Clone this repository to your local machine by running the following command in your terminal:
+- [Next.js 13](https://nextjs.org/)
+- [React 18](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
 
-    ```bash
-    git clone https://github.com/Nick-h4ck3r/portfolio-nextjs-latest.git
-    ```
+## Proyectos destacados
 
-2. Change into the project directory:
+- `Blockchain UNI`
+- `Tech Labs`
+- `Guante Traductor de Lengua de Señas`
+- `El Gran Chef`
+- `MuseIQ`
 
-    ```bash
-    cd portfolio-nextjs-latest
-    ```
+## Ejecutar localmente
 
-3. Install the dependencies:
+1. Clona el repositorio:
 
-    ```bash
-    npm install
-    ```
+```bash
+git clone https://github.com/eduardo202020/portafolio-Eduardo.git
+```
 
-4. Run the development server:
+2. Entra a la carpeta:
 
-    ```bash
-    npm run dev
-    ```
+```bash
+cd portafolio-Eduardo
+```
 
-5. Open <http://localhost:3000> in your browser to see the website.
+3. Instala dependencias:
 
-## Usage
+```bash
+npm install
+```
 
-To customize the Portfolio website for your own use, follow these steps:
+4. Levanta el entorno de desarrollo:
 
-1. Edit the `data/data.json` file with your own project information.
-2. Edit the `components/About.tsx` file with your own information.
-3. Edit the `components/Experience.tsx` file with your own information.
-4. Edit the `components/Skills.tsx` file with your own information.
-5. Edit the `components/Contact.tsx` file with your own information.
-6. Replace the links in `components/Header.tsx` file with your own social links.
+```bash
+npm run dev
+```
 
-Feel free to experiment and customize the project to your liking.
+5. Abre:
 
-Don't be afraid to try out different effects and animations in Framer Motion or change the colors in the website using Tailwind CSS.
+```text
+http://localhost:3000
+```
 
-Have fun!
+## Scripts
 
-## Screenshots and Demo
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
 
-**Hero section:**
+## Recursos del proyecto
 
-![Hero section](/public/screenshots/portfolio/heroDemo.png)
+- Datos de proyectos: [data/data.json](/C:/Users/pc/Documents/iot/portafolio-Eduardo/data/data.json)
+- Página principal: [pages/index.tsx](/C:/Users/pc/Documents/iot/portafolio-Eduardo/pages/index.tsx)
+- Estilos globales: [styles/globals.css](/C:/Users/pc/Documents/iot/portafolio-Eduardo/styles/globals.css)
+- CV público: [public/extraImages/cv.pdf](/C:/Users/pc/Documents/iot/portafolio-Eduardo/public/extraImages/cv.pdf)
 
-**About section:**
+## Notas
 
-![About section](/public/screenshots/portfolio/aboutDemo.png)
+- El favicon se genera a partir de `public/logo.png`.
+- El sonido del hover de proyectos usa `public/sounds/hover.mp3`.
+- Las imagenes de proyectos y estudios viven en `public/extraImages` y `public/estudio`.
 
-**Experience section:**
+## Licencia
 
-![Experience section](/public/screenshots/portfolio/experienceDemo.png)
-
-**Skills section:**
-
-![Skills section](/public/screenshots/portfolio/skillsDemo.png)
-
-**Projects section:**
-
-![Project section](/public/screenshots/portfolio/projectsDemo.png)
-
-**Contact section:**
-
-![Contact section](/public/screenshots/portfolio/contactDemo.png)
-
-**Live:** [Portfolio - Nikhil kadam](https://nikhilkadam.vercel.app/)
-
-## Credits
-
-Feel free to use this template for your own portfolio website, and kindly consider giving me credit if you found it useful.
-
-## License
-
-This project is released under the MIT License. See the [LICENSE](/LICENSE.txt) file for more details.
+Este proyecto usa la licencia MIT. Ver [LICENSE.txt](/C:/Users/pc/Documents/iot/portafolio-Eduardo/LICENSE.txt).
