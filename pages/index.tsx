@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 type ProjectTech = {
   id?: number;
@@ -13,8 +14,9 @@ type Project = {
   title: string;
   content: string;
   imgurl: string;
-  githubLink: string;
-  deployedLink: string;
+  images?: string[];
+  githubLink?: string;
+  deployedLink?: string;
   tech?: ProjectTech[];
 };
 
@@ -40,7 +42,7 @@ const studies = [
   {
     label: "Especializacion practica",
     title: "Udemy",
-    detail: "Cursos tecnicos y proyectos aplicados",
+    detail: "LLM Engineering con LangChain, agentes y herramientas modernas de IA",
     period: "2021 - Actualidad",
     logo: "/estudio/udemy.webp",
   },
@@ -52,7 +54,83 @@ const studies = [
     period: "2025 - 2026",
     logo: "/estudio/ctic.jpg",
   },
+  {
+    label: "IA y agentes",
+    title: "OpenAI Academy",
+    detail:
+      "Certificados en AI Foundations, Applied AI Foundations y Agents and Workflows",
+    period: "Formacion continua",
+    logo: "/skillsLogos/openai.svg",
+  },
 ];
+
+const certifications = [
+  {
+    eyebrow: "Reconocimiento nacional",
+    title: "1.er lugar - Hackatón Nacional Transformagob 2026",
+    issuer: "Gobierno del Perú · Presidencia del Consejo de Ministros",
+    date: "Julio 2026",
+    dateTime: "2026-07",
+    description:
+      "Se otorga la presente constancia por haber obtenido el 1.º lugar en la Hackatón Nacional Transformagob 2026, al presentar la propuesta de solución más destacada frente a un desafío de innovación digital, con impacto en la resolución de problemáticas reales de entidades públicas en beneficio de la ciudadanía, en el marco de los Objetivos Prioritarios 3 (servicios digitales centrados en las personas), 4 (talento digital para todas las personas) y 6 (innovación digital) de la Política Nacional de Transformación Digital.",
+    preview: "/certificados/preview-transformagob-2026.png",
+    document: "/certificados/certifficacdo-pcm.pdf",
+    note: "Constancia oficial firmada digitalmente",
+    featured: true,
+  },
+  {
+    eyebrow: "Ruta de aprendizaje",
+    title: "Desarrollo de Apps con React Native",
+    issuer: "Platzi",
+    date: "26 febrero 2023",
+    dateTime: "2023-02-26",
+    description:
+      "Ruta aprobada de desarrollo de aplicaciones móviles con React Native.",
+    preview: "/certificados/preview-react-native.png",
+    document: "/certificados/diploma-react-native.pdf",
+    verificationUrl:
+      "https://platzi.com/p/jguevaral/ruta/12-ruta/diploma/detalle/",
+    note: "Certificación de aprobación online",
+    featured: false,
+  },
+  {
+    eyebrow: "Programa de formación",
+    title: "Full Stack con Next.js",
+    issuer: "Platzi · Escuela de Desarrollo Web",
+    date: "24 febrero 2023",
+    dateTime: "2023-02-24",
+    description:
+      "Programa completado de desarrollo full stack con Next.js para construir productos web de extremo a extremo.",
+    preview: "/certificados/preview-full-stack-next.png",
+    document: "/certificados/diploma-web-next.pdf",
+    verificationUrl:
+      "https://platzi.com/p/jguevaral/ruta/7049-ruta/diploma/detalle/",
+    note: "Certificación de aprobación online",
+    featured: false,
+  },
+  {
+    eyebrow: "OpenAI Academy",
+    title: "Agents and Workflows",
+    issuer: "OpenAI Academy",
+    date: "25 julio 2026",
+    dateTime: "2026-07-25",
+    description:
+      "Certificado de finalización del curso Agents and Workflows, emitido por OpenAI Academy a Eduardo Guevara como formación aplicada en agentes y flujos de trabajo con inteligencia artificial.",
+    preview: "/certificados/preview-openai-agents-workflows.png",
+    document: "/certificados/openai-certificate.pdf",
+    verificationUrl:
+      "https://academy.openai.com/public/certificate/7p08p0nyp2",
+    note: "Certificado oficial · ID 7p08p0nyp2",
+    featured: false,
+  },
+];
+
+const CertificatePDFViewer = dynamic(
+  () => import("../components/CertificatePDFViewer"),
+  {
+    ssr: false,
+  },
+);
 
 const experience = [
   {
@@ -87,47 +165,119 @@ const experience = [
 
 const skillGroups = [
   {
-    title: "Frontend",
+    title: "Frontend y mobile",
     items: [
       "React",
       "Next.js",
       "React Native",
+      "Expo",
       "TypeScript",
       "JavaScript",
       "Tailwind CSS",
       "Framer Motion",
+      "Three.js",
       "HTML",
       "CSS",
     ],
   },
   {
-    title: "Backend",
+    title: "Backend y datos",
     items: [
       "Node.js",
       "Express",
       "FastAPI",
       "MongoDB",
-      "Blockchain UI",
+      "PostgreSQL",
       "Supabase",
+      "SQLite",
       "Python",
-      "LangChain",
     ],
   },
   {
-    title: "IoT y workflow",
+    title: "IA y automatizacion",
+    items: [
+      "OpenAI",
+      "ChatGPT",
+      "Claude",
+      "DeepSeek",
+      "Codex",
+      "LangChain",
+      "RAG",
+      "Streamlit",
+    ],
+  },
+  {
+    title: "IoT e integracion",
     items: [
       "ESP32",
+      "Raspberry Pi",
       "MicroPython",
       "BLE / GATT",
       "TTS / STT",
+      "Blockchain UI",
+    ],
+  },
+  {
+    title: "Workflow y documentacion",
+    items: [
       "Git",
       "GitHub",
       "Docker",
       "Linux",
       "Kubernetes",
+      "LaTeX",
     ],
   },
 ];
+
+const skillLogoByName: Record<string, string> = {
+  React: "/skillsLogos/react.png",
+  "Next.js": "/skillsLogos/next-js.png",
+  "React Native": "/skillsLogos/react.png",
+  Expo: "/skillsLogos/expo.svg",
+  TypeScript: "/skillsLogos/typescript.png",
+  JavaScript: "/skillsLogos/js.png",
+  "Tailwind CSS": "/skillsLogos/tailwind.png",
+  "Framer Motion": "/skillsLogos/framer.png",
+  "Three.js": "/skillsLogos/threedotjs.svg",
+  HTML: "/skillsLogos/html.png",
+  CSS: "/skillsLogos/css.png",
+  "Node.js": "/skillsLogos/node.png",
+  Express: "/skillsLogos/express.png",
+  FastAPI: "/skillsLogos/fastapi.svg",
+  MongoDB: "/skillsLogos/mongodb.png",
+  PostgreSQL: "/skillsLogos/postgresql.svg",
+  Supabase: "/skillsLogos/supabase.svg",
+  SQLite: "/skillsLogos/sqlite.svg",
+  Python: "/skillsLogos/python.png",
+  OpenAI: "/skillsLogos/openai.svg",
+  ChatGPT: "/skillsLogos/openai.svg",
+  Claude: "/skillsLogos/claude.svg",
+  DeepSeek: "/skillsLogos/deepseek.svg",
+  Codex: "/skillsLogos/openai.svg",
+  LangChain: "/skillsLogos/langchain.svg",
+  RAG: "/skillsLogos/langchain.svg",
+  Streamlit: "/skillsLogos/streamlit.svg",
+  ESP32: "/skillsLogos/espressif.svg",
+  "Raspberry Pi": "/skillsLogos/raspberrypi.svg",
+  MicroPython: "/skillsLogos/micropython.svg",
+  "BLE / GATT": "/skillsLogos/bluetooth.svg",
+  "TTS / STT": "/skillsLogos/python.png",
+  "Blockchain UI": "/extraImages/blockchain.png",
+  Git: "/skillsLogos/git.png",
+  GitHub: "/skillsLogos/github.png",
+  Docker: "/skillsLogos/docker.png",
+  Linux: "/skillsLogos/linux.png",
+  Kubernetes: "/skillsLogos/kuber.png",
+  LaTeX: "/skillsLogos/latex.svg",
+};
+
+const aiTools = [
+  { name: "OpenAI", focus: "APIs y modelos" },
+  { name: "ChatGPT", focus: "Ideación y revisión" },
+  { name: "Claude", focus: "Código y contexto" },
+  { name: "DeepSeek", focus: "Análisis técnico" },
+] as const;
 
 const skillIcons = [
   "/skillsLogos/react.png",
@@ -138,22 +288,56 @@ const skillIcons = [
   "/skillsLogos/mongodb.png",
 ];
 
-const profileImage = "/extraImages/profilePic.jpg";
+const profileImage = "/extraImages/perfil.png";
+
+const techLabelBySlug: Record<string, string> = {
+  react: "React",
+  "next-js": "Next.js",
+  typescript: "TypeScript",
+  js: "JavaScript",
+  node: "Node.js",
+  fastapi: "FastAPI",
+  langchain: "LangChain",
+  bluetooth: "BLE",
+  mongodb: "MongoDB",
+  github: "GitHub",
+  docker: "Docker",
+  linux: "Linux",
+  python: "Python",
+  express: "Express",
+  firebase: "Firebase",
+  html: "HTML",
+  css: "CSS",
+};
 
 function techLabel(path: string) {
-  return path
+  const slug = path
     .split("/")
     .pop()
-    ?.replace(/\.[^.]+$/, "")
+    ?.replace(/\.[^.]+$/, "");
+
+  if (!slug) {
+    return "";
+  }
+
+  return (
+    techLabelBySlug[slug] ||
+    slug
     .replace(/-/g, " ")
-    .replace(/\b\w/g, (char) => char.toUpperCase());
+    .replace(/\b\w/g, (char) => char.toUpperCase())
+  );
 }
 
 export default function Home({ data }: HomeProps) {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const heroZoneRef = useRef<HTMLElement | null>(null);
+  const [activeCertificate, setActiveCertificate] = useState<
+    (typeof certifications)[number] | null
+  >(null);
   const hoverAudioRef = useRef<HTMLAudioElement | null>(null);
+  const orderedProjects = [
+    ...data.filter((project) => (project.images?.length ?? 0) >= 3),
+    ...data.filter((project) => (project.images?.length ?? 0) < 3),
+  ];
 
   const playExpandSound = () => {
     if (typeof window === "undefined") {
@@ -172,54 +356,24 @@ export default function Home({ data }: HomeProps) {
     });
   };
 
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const heroZone = heroZoneRef.current;
-
-      if (!heroZone) {
-        return;
-      }
-
-      const rect = heroZone.getBoundingClientRect();
-      const x = Math.min(Math.max(event.clientX - rect.left, 0), rect.width);
-      const y = Math.min(Math.max(event.clientY - rect.top, 0), rect.height);
-
-      setMousePosition({ x, y });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
   return (
     <>
       <Head>
         <title>Eduardo Guevara | Portfolio</title>
         <meta
           name="description"
-          content="Portafolio de Eduardo Guevara, desarrollador full stack enfocado en construir productos web escalables con una ejecucion clara y una interfaz cuidada."
+          content="Portafolio de Eduardo Guevara, desarrollador full stack, mobile y asistido por IA enfocado en producto, automatización, Codex e integración IoT."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
-          content="Eduardo Guevara, portfolio, desarrollador full stack, Next.js, React, TypeScript, Lima"
+          content="Eduardo Guevara, portfolio, desarrollador full stack, Next.js, React, TypeScript, IA, Codex, RAG, IoT, Lima"
         />
         <link rel="icon" type="image/png" href="/logo.png" />
         <link rel="apple-touch-icon" href="/logo.png" />
       </Head>
 
-      <div
-        className="min-h-screen bg-[radial-gradient(circle_at_top,#202020_0%,#0d0d0d_45%,#070707_100%)] text-stone-100"
-        style={
-          {
-            "--mouse-x": `${mousePosition.x}px`,
-            "--mouse-y": `${mousePosition.y}px`,
-          } as React.CSSProperties
-        }
-      >
+      <div className="min-h-screen bg-[radial-gradient(circle_at_top,#202020_0%,#0d0d0d_45%,#070707_100%)] text-stone-100">
         <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:32px_32px] opacity-[0.07]" />
         <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(214,181,107,0.16),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(75,85,99,0.22),transparent_26%)]" />
         <div className="vitruvio-shell pointer-events-none fixed right-0 top-0 z-0 hidden h-screen w-[42vw] min-w-[360px] lg:block">
@@ -254,6 +408,12 @@ export default function Home({ data }: HomeProps) {
               </a>
               <a href="#experiencia" className="transition hover:text-stone-100">
                 Formacion
+              </a>
+              <a
+                href="#certificaciones"
+                className="hidden transition hover:text-stone-100 xl:inline"
+              >
+                Logros
               </a>
               <a href="#skills" className="transition hover:text-stone-100">
                 Stack
@@ -296,16 +456,7 @@ export default function Home({ data }: HomeProps) {
         </header>
 
         <main id="top" className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-6 md:px-8 md:py-10">
-          <section
-            ref={heroZoneRef}
-            className="hero-zone relative grid gap-6 lg:grid-cols-[1.35fr_0.85fr]"
-          >
-            <div className="hero-spotlight pointer-events-none absolute inset-0 z-30 overflow-hidden rounded-[32px]">
-              <div className="hero-spotlight-glow" />
-              <div className="hero-scan-horizontal" />
-              <div className="hero-scan-diagonal scanner-line" />
-              <div className="hero-scan-dot" />
-            </div>
+          <section className="relative grid gap-6 lg:grid-cols-[1.35fr_0.85fr]">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -318,25 +469,26 @@ export default function Home({ data }: HomeProps) {
                   <span>Signal strong</span>
                 </div>
 
-                <div className="grid gap-10 px-5 py-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-8">
+                <div className="grid gap-10 px-5 py-6 lg:grid-cols-2 lg:px-8 lg:py-8">
                   <div className="space-y-8">
                     <div className="space-y-4">
                       <p className="font-mono text-xs uppercase tracking-[0.28em] text-red-400">
-                        Subject profile // web + iot
+                        Subject profile // web + mobile + iot + ai
                       </p>
                       <h1 className="font-display text-5xl uppercase leading-[0.9] text-stone-100 sm:text-6xl lg:text-7xl">
                         Eduardo
-                        <span className="block text-stone-800/60">
+                        <span className="block text-stone-300/70">
                           Guevara
                         </span>
                       </h1>
                       <p className="max-w-2xl text-base leading-7 text-stone-300 sm:text-lg">
-                        Desarrollador con base en Ingenieria Electronica.
-                        Construyo productos web, mobile e IoT con foco en
-                        integracion, claridad tecnica y experiencia de uso.
+                        Ingeniero electrónico y desarrollador orientado a
+                        producto. Construyo soluciones web, mobile, IoT e IA
+                        aplicada, apoyándome en agentes para planificar,
+                        implementar, revisar y documentar software.
                       </p>
                       <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-stone-500">
-                        Backend rigor / frontend interactivity / iot integration
+                        Product architecture / ai-assisted delivery / iot integration
                       </p>
                     </div>
 
@@ -348,7 +500,7 @@ export default function Home({ data }: HomeProps) {
                       <div className="mini-panel">
                         <span className="mini-label">Foco</span>
                         <strong className="mini-value">
-                          Web, mobile e IoT
+                          Web, mobile, IA e IoT
                         </strong>
                       </div>
                       <div className="mini-panel">
@@ -403,11 +555,11 @@ export default function Home({ data }: HomeProps) {
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,40,40,0.16),transparent_42%)]" />
                         <Image
                           src={profileImage}
-                          alt="Eduardo Guevara"
-                          width={560}
-                          height={680}
+                          alt="Retrato profesional de Eduardo Guevara"
+                          width={720}
+                          height={720}
                           priority
-                          className="h-[420px] w-full object-cover object-center grayscale contrast-125"
+                          className="aspect-square w-full scale-[1.1] object-cover object-center"
                         />
                       </div>
                     </div>
@@ -459,15 +611,15 @@ export default function Home({ data }: HomeProps) {
                 <div className="mt-6 space-y-3 text-sm text-stone-300">
                   <div className="info-row">
                     <span>Stack base</span>
-                    <strong>React / Next.js / ESP32 / FastAPI</strong>
+                    <strong>React / FastAPI / Python / Codex</strong>
                   </div>
                   <div className="info-row">
                     <span>Enfoque</span>
-                    <strong>UX, integracion hardware-software</strong>
+                    <strong>Producto, IA e integracion hardware-software</strong>
                   </div>
                   <div className="info-row">
                     <span>Intereses</span>
-                    <strong>IoT, blockchain, IA aplicada y cafe</strong>
+                    <strong>Agentes, RAG, automatizacion, IoT y cafe</strong>
                   </div>
                 </div>
               </div>
@@ -485,7 +637,7 @@ export default function Home({ data }: HomeProps) {
                   </div>
                   <div className="summary-card">
                     <span className="summary-index">03</span>
-                    <p>Blockchain, tesis IoT y ejecucion end-to-end.</p>
+                    <p>IA aplicada, RAG, automatizacion y flujos con agentes.</p>
                   </div>
                 </div>
               </div>
@@ -505,7 +657,7 @@ export default function Home({ data }: HomeProps) {
             >
               <p className="section-kicker text-red-400">Subject profile</p>
               <h2 className="mt-4 font-display text-4xl uppercase leading-none text-stone-100 md:text-5xl">
-                Desarrollo con enfoque tecnico y sensibilidad por la experiencia.
+                Producto, automatizacion e integracion con criterio tecnico.
               </h2>
             </motion.div>
 
@@ -521,10 +673,10 @@ export default function Home({ data }: HomeProps) {
                   <div className="relative overflow-hidden rounded-[18px] border border-white/10 bg-[#101010]">
                     <Image
                       src={profileImage}
-                      alt="Avatar de GitHub de Eduardo"
+                      alt="Retrato profesional de Eduardo Guevara"
                       width={360}
                       height={360}
-                      className="aspect-square w-full object-cover grayscale"
+                      className="aspect-square w-full object-cover object-center"
                     />
                     <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-red-500/30 to-transparent" />
                   </div>
@@ -568,12 +720,13 @@ export default function Home({ data }: HomeProps) {
                   <p className="mt-6 text-base leading-8 text-stone-300">
                     Me interesa construir productos utiles, claros y bien
                     ejecutados. Trabajo en la interseccion entre software,
-                    dispositivos, blockchain e interfaces interactivas.
+                    dispositivos, IA aplicada e interfaces interactivas.
                   </p>
                   <p className="mt-5 text-base leading-8 text-stone-300">
-                    Mi linea mas fuerte hoy es conectar frontend, backend y
-                    hardware para resolver problemas reales de comunicacion,
-                    operacion y accesibilidad.
+                    Uso Codex y flujos con agentes para explorar, planificar,
+                    implementar, revisar y documentar software, conectando
+                    frontend, backend, datos y hardware para resolver problemas
+                    reales.
                   </p>
                 </div>
               </div>
@@ -594,7 +747,7 @@ export default function Home({ data }: HomeProps) {
               </p>
             </div>
 
-            <div className="mt-8 grid gap-4 lg:grid-cols-4">
+            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
               {experience.map((item, index) => (
                 <motion.article
                   key={item.title}
@@ -646,7 +799,7 @@ export default function Home({ data }: HomeProps) {
                     <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[#d6b56b]">
                       {study.label}
                     </p>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-[14px] border border-white/10 bg-white/[0.04] p-2">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-[14px] border border-white/10 bg-stone-100 p-2">
                       <Image
                         src={study.logo}
                         alt={study.title}
@@ -663,6 +816,165 @@ export default function Home({ data }: HomeProps) {
                 </motion.article>
               ))}
             </div>
+          </section>
+
+          <section
+            id="certificaciones"
+            className="panel-shell overflow-hidden p-5 md:p-7"
+          >
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="section-kicker text-red-400">
+                  Logros verificados
+                </p>
+                <h2 className="mt-4 font-display text-4xl uppercase leading-none md:text-5xl">
+                  Certificaciones y reconocimientos
+                </h2>
+              </div>
+              <p className="max-w-xl text-sm leading-7 text-stone-400">
+                Evidencia de formación técnica y de la aplicación de ese
+                conocimiento en retos de innovación con impacto público.
+              </p>
+            </div>
+
+            <div className="mt-7 grid gap-3 border-y border-white/10 py-4 sm:grid-cols-3">
+              <div className="flex items-center gap-3">
+                <strong className="font-display text-3xl text-stone-100">
+                  04
+                </strong>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
+                  Credenciales
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <strong className="font-display text-3xl text-red-400">
+                  01
+                </strong>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
+                  Reconocimiento nacional
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <strong className="font-display text-3xl text-[#d6b56b]">
+                  03
+                </strong>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
+                  Formación técnica e IA
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-8 grid gap-4 lg:grid-cols-12">
+              {certifications.map((certificate, index) => (
+                <motion.article
+                  key={certificate.title}
+                  initial={{ opacity: 0, y: 22 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.6, delay: index * 0.08 }}
+                  className={`certificate-card group flex flex-col overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.025] ${
+                    certificate.featured
+                      ? "lg:col-span-7 lg:row-span-2"
+                      : index === certifications.length - 1
+                        ? "lg:col-span-12"
+                        : "lg:col-span-5"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setActiveCertificate(certificate)}
+                    aria-label={`Abrir certificado: ${certificate.title}`}
+                    className={`relative block w-full cursor-zoom-in overflow-hidden border-b border-white/10 bg-[#efeee9] text-left ${
+                      certificate.featured ? "h-[430px]" : "h-[250px]"
+                    }`}
+                  >
+                    <div className="absolute left-4 top-4 z-20 rounded-full border border-black/10 bg-black/80 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.22em] text-white backdrop-blur-sm">
+                      Documento {String(index + 1).padStart(2, "0")}
+                    </div>
+                    <Image
+                      src={certificate.preview}
+                      alt={`Vista previa de ${certificate.title}`}
+                      fill
+                      sizes={
+                        certificate.featured
+                          ? "(min-width: 1024px) 55vw, 100vw"
+                          : "(min-width: 1024px) 40vw, 100vw"
+                      }
+                      className="object-contain transition duration-500 group-hover:scale-[1.02]"
+                    />
+                    <span className="absolute bottom-4 right-4 z-20 rounded-full border border-white/15 bg-black/80 px-4 py-2 font-mono text-[9px] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+                      Abrir visor
+                    </span>
+                  </button>
+
+                  <div className="flex flex-1 flex-col justify-between gap-6 p-5 md:p-6">
+                    <div>
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <p
+                          className={`font-mono text-[10px] uppercase tracking-[0.24em] ${
+                            certificate.featured
+                              ? "text-red-400"
+                              : "text-[#d6b56b]"
+                          }`}
+                        >
+                          {certificate.eyebrow}
+                        </p>
+                        <time
+                          dateTime={certificate.dateTime}
+                          className="font-mono text-[10px] uppercase tracking-[0.2em] text-stone-500"
+                        >
+                          {certificate.date}
+                        </time>
+                      </div>
+                      <h3
+                        className={`mt-4 text-stone-100 ${
+                          certificate.featured
+                            ? "font-display text-4xl uppercase leading-none md:text-5xl"
+                            : "text-2xl"
+                        }`}
+                      >
+                        {certificate.title}
+                      </h3>
+                      <p className="mt-3 text-sm text-stone-400">
+                        {certificate.issuer}
+                      </p>
+                      <p className="mt-5 text-sm leading-7 text-stone-300">
+                        {certificate.description}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-4">
+                      <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-stone-500">
+                        {certificate.note}
+                      </span>
+                      <div className="flex flex-wrap gap-2">
+                        {certificate.verificationUrl && (
+                          <a
+                            href={certificate.verificationUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full border border-[#d6b56b]/40 bg-[#d6b56b]/5 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#f1dfb0] transition hover:border-[#d6b56b] hover:bg-[#d6b56b]/10"
+                            aria-label={`Validar credencial de ${certificate.title} en el sitio del emisor`}
+                          >
+                            Validar credencial
+                            <span aria-hidden="true">↗</span>
+                          </a>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => setActiveCertificate(certificate)}
+                          className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-stone-200 transition hover:border-red-500/50 hover:text-red-300"
+                        >
+                          Explorar PDF
+                          <span aria-hidden="true">↗</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.article>
+              ))}
+            </div>
+
           </section>
 
           <section id="skills" className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
@@ -696,7 +1008,16 @@ export default function Home({ data }: HomeProps) {
                     <div className="flex flex-wrap gap-2">
                       {group.items.map((item) => (
                         <span key={item} className="skill-pill">
-                          {item}
+                          <span className="skill-logo" aria-hidden="true">
+                            <Image
+                              src={skillLogoByName[item]}
+                              alt=""
+                              width={20}
+                              height={20}
+                              className="h-5 w-5 object-contain"
+                            />
+                          </span>
+                          <span>{item}</span>
                         </span>
                       ))}
                     </div>
@@ -722,19 +1043,16 @@ export default function Home({ data }: HomeProps) {
             <div className="mt-8 flex items-center justify-between gap-4 border-y border-white/10 py-4">
               <div className="flex items-center gap-3">
                 <button className="rounded-sm border border-red-500/40 bg-red-500/10 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-red-400">
-                  Slider
-                </button>
-                <button className="rounded-sm border border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
-                  List
+                  Cuadrícula
                 </button>
               </div>
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
-                Sector: web scanning active
+                Archivo visual · {orderedProjects.length} proyectos
               </div>
             </div>
 
-            <div className="evidence-scroll mt-8 flex gap-5 overflow-x-auto pb-4">
-              {data.map((project, index) => (
+            <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {orderedProjects.map((project, index) => (
                 <motion.article
                   key={project.id}
                   initial={{ opacity: 0, y: 22 }}
@@ -748,7 +1066,7 @@ export default function Home({ data }: HomeProps) {
                     setHoveredProject(project.id);
                   }}
                   onMouseLeave={() => setHoveredProject(null)}
-                  className={`evidence-card flex min-h-[620px] min-w-[220px] flex-col overflow-hidden rounded-none border bg-[#0a0a0a] ${
+                  className={`evidence-card flex min-h-[600px] flex-col overflow-hidden rounded-none border bg-[#0a0a0a] ${
                     hoveredProject === project.id
                       ? "is-active border-red-500/80"
                       : hoveredProject !== null
@@ -763,15 +1081,48 @@ export default function Home({ data }: HomeProps) {
                     <div className="absolute right-4 top-10 z-20 [writing-mode:vertical-rl] font-mono text-[9px] uppercase tracking-[0.22em] text-red-500/80">
                       Interface / prototype
                     </div>
-                    <Image
-                      src={project.imgurl}
-                      alt={project.title}
-                      width={900}
-                      height={620}
-                      className={`h-full w-full object-cover object-top transition duration-500 ${
-                        hoveredProject === project.id ? "scale-[1.03]" : ""
-                      }`}
-                    />
+                    {project.images && project.images.length > 1 ? (
+                      <div className="grid h-full grid-cols-[1.35fr_1fr] grid-rows-2 gap-px bg-white/10">
+                        {project.images.slice(0, 3).map((image, imageIndex) => (
+                          <div
+                            key={image}
+                            className={`relative overflow-hidden bg-[#080808] ${
+                              imageIndex === 0 ? "row-span-2" : ""
+                            }`}
+                          >
+                            <Image
+                              src={image}
+                              alt={`${project.title} - vista ${imageIndex + 1}`}
+                              fill
+                              sizes="(min-width: 1280px) 14vw, (min-width: 768px) 24vw, 55vw"
+                              className={`object-cover object-center transition duration-500 ${
+                                hoveredProject === project.id
+                                  ? "scale-[1.025]"
+                                  : ""
+                              }`}
+                            />
+                            <span className="absolute bottom-2 right-2 z-10 rounded-sm border border-white/10 bg-black/70 px-2 py-1 font-mono text-[8px] uppercase tracking-[0.18em] text-stone-300">
+                              {String(imageIndex + 1).padStart(2, "0")}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <Image
+                        src={project.imgurl}
+                        alt={project.title}
+                        width={900}
+                        height={620}
+                        className={`h-full w-full object-cover object-top transition duration-500 ${
+                          hoveredProject === project.id ? "scale-[1.03]" : ""
+                        }`}
+                      />
+                    )}
+                    {project.images && project.images.length > 1 && (
+                      <div className="absolute bottom-4 left-4 z-20 rounded-full border border-white/10 bg-black/75 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-200 backdrop-blur-sm">
+                        {project.images.length} vistas
+                      </div>
+                    )}
                   </div>
 
                   <div className="flex flex-1 flex-col justify-between gap-5 p-5">
@@ -825,22 +1176,31 @@ export default function Home({ data }: HomeProps) {
                             : "translate-y-2 opacity-0"
                         }`}
                       >
-                        <a
-                          href={project.deployedLink}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="rounded-sm border border-red-500/50 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-red-400 transition hover:bg-red-500/10"
-                        >
-                          Demo
-                        </a>
-                        <a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="rounded-sm border border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-300 transition hover:border-white/30"
-                        >
-                          Codigo
-                        </a>
+                        {project.deployedLink && (
+                          <a
+                            href={project.deployedLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="rounded-sm border border-red-500/50 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-red-400 transition hover:bg-red-500/10"
+                          >
+                            Demo
+                          </a>
+                        )}
+                        {project.githubLink && (
+                          <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="rounded-sm border border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-300 transition hover:border-white/30"
+                          >
+                            Codigo
+                          </a>
+                        )}
+                        {!project.deployedLink && !project.githubLink && (
+                          <span className="rounded-sm border border-white/10 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.22em] text-stone-500">
+                            Caso visual
+                          </span>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -854,7 +1214,7 @@ export default function Home({ data }: HomeProps) {
                   Evidence archive
                 </p>
                 <p className="mt-2 font-display text-2xl text-stone-100">
-                  {String(data.length).padStart(2, "0")} files
+                  {String(orderedProjects.length).padStart(2, "0")} files
                 </p>
               </div>
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-red-400">
@@ -863,30 +1223,233 @@ export default function Home({ data }: HomeProps) {
             </div>
           </section>
 
-          <section id="contacto" className="panel-shell p-5 md:p-7">
-            <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <section id="generative-ai" aria-labelledby="generative-ai-title">
+            <motion.article
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.65 }}
+              className="overflow-hidden rounded-[28px] border border-[#d6b56b]/25 bg-[linear-gradient(135deg,rgba(214,181,107,0.1),rgba(255,255,255,0.025)_48%,rgba(255,48,48,0.07))]"
+            >
+              <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
+                <div className="border-b border-white/10 p-6 md:p-8 lg:border-b-0 lg:border-r">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#d6b56b]">
+                      Aprendizaje en curso · Agentic software
+                    </p>
+                    <span className="rounded-full border border-[#d6b56b]/25 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.2em] text-[#f1dfb0]">
+                      DeepLearning.AI
+                    </span>
+                  </div>
+                  <h2
+                    id="generative-ai-title"
+                    className="mt-6 font-display text-4xl uppercase leading-none text-stone-100 md:text-5xl"
+                  >
+                    Generative AI for Software Development
+                  </h2>
+                  <p className="mt-4 text-sm text-stone-400">
+                    Programa de Laurence Moroney · 32+ horas · 80 lecciones
+                  </p>
+                  <p className="mt-6 text-base leading-8 text-stone-300">
+                    Formación aplicada para integrar LLMs durante todo el ciclo
+                    de software: diseño, generación de código, pruebas,
+                    depuración, documentación, dependencias, patrones y
+                    arquitectura de datos.
+                  </p>
+                  <a
+                    href="https://www.deeplearning.ai/specializations/generative-ai-for-software-development"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="cta-primary mt-7"
+                  >
+                    Ver especialización
+                  </a>
+                </div>
+
+                <div className="p-6 md:p-8">
+                  <p className="section-kicker text-red-400">
+                    Foco de aplicación
+                  </p>
+                  <h3 className="mt-4 text-3xl text-stone-100">
+                    Harness Engineering
+                  </h3>
+                  <p className="mt-5 text-sm leading-7 text-stone-300">
+                    La siguiente etapa no consiste solo en pedirle código a un
+                    modelo. Consiste en diseñar el entorno que permite a los
+                    agentes trabajar con autonomía: especificaciones,
+                    conocimiento del repositorio, herramientas, permisos,
+                    sandboxes, pruebas y ciclos de evaluación.
+                  </p>
+
+                  <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                    {[
+                      ["01", "Contexto", "Specs y conocimiento legible"],
+                      ["02", "Ejecución", "Herramientas y sandboxes seguros"],
+                      ["03", "Validación", "Tests y feedback automático"],
+                    ].map(([index, title, detail]) => (
+                      <div
+                        key={index}
+                        className="rounded-[20px] border border-white/10 bg-black/20 p-4"
+                      >
+                        <span className="font-mono text-[10px] text-red-400">
+                          {index}
+                        </span>
+                        <strong className="mt-3 block text-sm text-stone-100">
+                          {title}
+                        </strong>
+                        <p className="mt-2 text-xs leading-5 text-stone-500">
+                          {detail}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 rounded-[20px] border border-white/10 bg-black/20 p-5">
+                    <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-stone-500">
+                      Herramientas de IA con las que trabajo
+                    </p>
+                    <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                      {aiTools.map((tool) => (
+                        <div
+                          key={tool.name}
+                          className="rounded-[16px] border border-white/10 bg-white/[0.03] p-3"
+                        >
+                          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-stone-100 p-2">
+                            <Image
+                              src={skillLogoByName[tool.name]}
+                              alt=""
+                              width={22}
+                              height={22}
+                              className="h-[22px] w-[22px] object-contain"
+                            />
+                          </span>
+                          <strong className="mt-3 block text-xs text-stone-100">
+                            {tool.name}
+                          </strong>
+                          <span className="mt-1 block text-[10px] leading-4 text-stone-500">
+                            {tool.focus}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-6 rounded-[20px] border border-white/10 bg-white/[0.025] p-5">
+                    <p className="font-mono text-[9px] uppercase tracking-[0.22em] text-stone-500">
+                      Por qué es el futuro
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-stone-300">
+                      OpenAI ya documentó un producto funcional construido
+                      enteramente por agentes; Anthropic está logrando
+                      aplicaciones full stack en sesiones de varias horas; y
+                      Vercel está convirtiendo los harnesses de Codex y Claude
+                      Code en una capa programable e intercambiable. El valor
+                      del desarrollador se desplaza de escribir cada línea a
+                      diseñar sistemas donde los agentes ejecutan y la calidad
+                      se verifica de forma continua.
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <a
+                        href="https://openai.com/index/harness-engineering/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="harness-source"
+                      >
+                        OpenAI ↗
+                      </a>
+                      <a
+                        href="https://www.anthropic.com/engineering/harness-design-long-running-apps"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="harness-source"
+                      >
+                        Anthropic ↗
+                      </a>
+                      <a
+                        href="https://vercel.com/changelog/program-agent-harnesses-with-ai-sdk"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="harness-source"
+                      >
+                        Vercel ↗
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          </section>
+        </main>
+
+        <footer
+          id="contacto"
+          className="relative z-10 mt-4 border-t border-white/10 bg-black/25"
+          aria-label="Contacto y enlaces profesionales"
+        >
+          <div className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-12">
+            <div className="mb-10 grid gap-6 rounded-[28px] border border-[#d6b56b]/25 bg-[linear-gradient(135deg,rgba(214,181,107,0.12),rgba(255,255,255,0.025)_55%,rgba(255,48,48,0.08))] p-6 md:p-8 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
-                <p className="section-kicker">Contacto</p>
-                <h2 className="mt-4 font-display text-4xl uppercase leading-none md:text-5xl">
-                  Si tienes una idea, la podemos convertir en producto.
+                <p className="section-kicker text-[#d6b56b]">
+                  Contacto directo
+                </p>
+                <h2 className="mt-4 max-w-3xl font-display text-4xl uppercase leading-none text-stone-100 md:text-5xl">
+                  Construyamos algo útil, sólido y listo para crecer.
                 </h2>
-                <p className="mt-5 max-w-2xl text-base leading-8 text-stone-300">
-                  Estoy abierto a nuevas oportunidades, colaboraciones y
-                  proyectos donde el producto necesite tanto implementacion como
-                  una presencia visual con mas personalidad, o una integracion
-                  solida entre software, mobile e IoT.
+                <p className="mt-5 max-w-2xl text-sm leading-7 text-stone-300">
+                  Disponible para oportunidades, colaboraciones y productos que
+                  combinen software, IA, mobile o integración hardware-software.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                <a
+                  href="https://wa.me/51991004126"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="cta-primary"
+                >
+                  Escribir por WhatsApp
+                </a>
+                <a href="mailto:jguevaral@uni.pe" className="cta-secondary">
+                  Enviar correo
+                </a>
+              </div>
+            </div>
+
+            <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+              <div>
+                <div className="flex items-center gap-4">
+                  <Image
+                    src="/logo.png"
+                    alt="Logo de Eduardo Guevara"
+                    width={54}
+                    height={54}
+                    className="h-14 w-14 rounded-[16px] object-cover"
+                  />
+                  <div>
+                    <p className="font-display text-2xl uppercase tracking-[0.16em] text-stone-100">
+                      Eduardo Guevara
+                    </p>
+                    <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-[#d6b56b]">
+                      Full Stack, Mobile & AI-Assisted Developer
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-6 max-w-md text-sm leading-7 text-stone-400">
+                  Desarrollo de productos web, mobile, IA e IoT con una mirada
+                  integral sobre experiencia, arquitectura, automatización e
+                  implementación.
                 </p>
               </div>
 
-              <div className="grid gap-4">
+              <div className="grid gap-3 sm:grid-cols-2">
                 <a
-                  href="/extraImages/cv.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="contact-card"
+                  href="mailto:jguevaral@uni.pe"
+                  className="contact-card sm:col-span-2"
                 >
-                  <span className="contact-label">CV</span>
-                  <strong className="contact-value">Ver currículum PDF</strong>
+                  <span className="contact-label">Correo profesional</span>
+                  <strong className="contact-value break-words text-base">
+                    jguevaral@uni.pe
+                  </strong>
                 </a>
                 <a
                   href="https://wa.me/51991004126"
@@ -895,17 +1458,8 @@ export default function Home({ data }: HomeProps) {
                   className="contact-card"
                 >
                   <span className="contact-label">WhatsApp</span>
-                  <strong className="contact-value">+51 991 004 126</strong>
-                </a>
-                <a
-                  href="https://github.com/eduardo202020"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="contact-card"
-                >
-                  <span className="contact-label">GitHub</span>
-                  <strong className="contact-value">
-                    github.com/eduardo202020
+                  <strong className="contact-value text-base">
+                    +51 991 004 126
                   </strong>
                 </a>
                 <a
@@ -915,15 +1469,55 @@ export default function Home({ data }: HomeProps) {
                   className="contact-card"
                 >
                   <span className="contact-label">LinkedIn</span>
-                  <strong className="contact-value">
+                  <strong className="contact-value break-words text-base">
                     jhunior-guevara-889483162
+                  </strong>
+                </a>
+                <a
+                  href="https://github.com/eduardo202020"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-card"
+                >
+                  <span className="contact-label">GitHub</span>
+                  <strong className="contact-value break-words text-base">
+                    github.com/eduardo202020
+                  </strong>
+                </a>
+                <a
+                  href="/extraImages/cv.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-card"
+                >
+                  <span className="contact-label">Currículum</span>
+                  <strong className="contact-value text-base">
+                    Ver CV en PDF
                   </strong>
                 </a>
               </div>
             </div>
-          </section>
-        </main>
+
+            <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-6 font-mono text-[9px] uppercase tracking-[0.2em] text-stone-500 sm:flex-row sm:items-center sm:justify-between">
+              <span>© 2026 Eduardo Guevara</span>
+              <a
+                href="#top"
+                className="transition hover:text-[#f1dfb0]"
+                aria-label="Volver al inicio de la página"
+              >
+                Volver arriba ↑
+              </a>
+            </div>
+          </div>
+        </footer>
       </div>
+      {activeCertificate && (
+        <CertificatePDFViewer
+          documentPath={activeCertificate.document}
+          title={activeCertificate.title}
+          onClose={() => setActiveCertificate(null)}
+        />
+      )}
     </>
   );
 }

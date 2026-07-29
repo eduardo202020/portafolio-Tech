@@ -11,7 +11,6 @@
 
   body {
     @apply bg-[#070707] font-sans text-stone-100 antialiased;
-    cursor: crosshair;
   }
 
   ::selection {
@@ -19,7 +18,6 @@
     color: #fff8e7;
   }
 }
-
 @layer components {
   .panel-shell {
     @apply rounded-[30px] border border-white/10 bg-[#0d0d0d] shadow-[0_20px_80px_rgba(0,0,0,0.35)];
@@ -106,7 +104,11 @@
   }
 
   .skill-pill {
-    @apply rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs uppercase tracking-[0.18em] text-stone-200;
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] py-2 pl-2.5 pr-4 text-xs uppercase tracking-[0.18em] text-stone-200;
+  }
+
+  .skill-logo {
+    @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-stone-100 p-1;
   }
 
   .contact-card {
@@ -121,89 +123,26 @@
     @apply mt-3 block text-lg text-stone-100 md:text-xl;
   }
 
-  .scanner-line {
-    animation: scanner-flicker 5s linear infinite;
+  .certificate-card {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.015);
+    transition:
+      border-color 240ms ease,
+      transform 240ms ease,
+      background-color 240ms ease;
   }
 
-  .hero-zone {
-    isolation: isolate;
+  .certificate-card:hover {
+    border-color: rgba(255, 48, 48, 0.38);
+    background-color: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
   }
 
-  .hero-spotlight-glow {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(
-        circle at var(--mouse-x) var(--mouse-y),
-        rgba(255, 255, 255, 0.12),
-        rgba(255, 255, 255, 0.07) 10%,
-        rgba(255, 255, 255, 0.025) 18%,
-        rgba(0, 0, 0, 0.14) 30%,
-        rgba(0, 0, 0, 0.48) 54%,
-        rgba(0, 0, 0, 0.82) 72%
-      );
-    mix-blend-mode: screen;
+  .pdf-toolbar-button {
+    @apply inline-flex h-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-2.5 font-mono text-[10px] uppercase tracking-[0.16em] text-stone-200 transition hover:border-white/30 hover:bg-white/[0.08] disabled:cursor-not-allowed disabled:opacity-40;
   }
 
-  .hero-scan-horizontal {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: var(--mouse-y);
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 45, 45, 0.22), transparent);
-    box-shadow: 0 0 6px rgba(255, 31, 31, 0.14);
-  }
-
-  .hero-scan-diagonal {
-    position: absolute;
-    left: var(--mouse-x);
-    top: calc(var(--mouse-y) - 24vh);
-    height: 58vh;
-    width: 1px;
-    background: linear-gradient(180deg, transparent, rgba(255, 45, 45, 0.32), transparent);
-    box-shadow: 0 0 8px rgba(255, 31, 31, 0.16);
-    transform: rotate(26deg);
-    transform-origin: center;
-  }
-
-  .hero-scan-dot {
-    position: absolute;
-    left: var(--mouse-x);
-    top: var(--mouse-y);
-    height: 7px;
-    width: 7px;
-    transform: translate(-50%, -50%);
-    border: 1px solid rgba(255, 110, 110, 0.55);
-    background: rgba(255, 55, 55, 0.42);
-    box-shadow: 0 0 8px rgba(255, 31, 31, 0.16);
-  }
-
-  .hero-coordinates {
-    position: absolute;
-    left: calc(var(--mouse-x) + 56px);
-    top: calc(var(--mouse-y) + 12px);
-    border: 1px solid rgba(255, 45, 45, 0.14);
-    background: rgba(0, 0, 0, 0.24);
-    padding: 0.35rem 0.45rem;
-    backdrop-filter: blur(4px);
-  }
-
-  .evidence-scroll {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 48, 48, 0.35) transparent;
-  }
-
-  .evidence-scroll::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .evidence-scroll::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .evidence-scroll::-webkit-scrollbar-thumb {
-    background: rgba(255, 48, 48, 0.28);
+  .harness-source {
+    @apply rounded-full border border-white/10 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.18em] text-stone-300 transition hover:border-[#d6b56b]/50 hover:text-[#f1dfb0];
   }
 
   .evidence-card {
@@ -272,40 +211,9 @@
   }
 
   @media (max-width: 1023px) {
-    body {
-      cursor: default;
-    }
-
-    .hero-spotlight {
-      display: none;
-    }
-
     .evidence-card {
       flex-basis: 78vw;
       min-width: 78vw;
     }
-  }
-}
-
-@keyframes scanner-flicker {
-  0%,
-  100% {
-    opacity: 0.72;
-    filter: blur(0px);
-  }
-
-  40% {
-    opacity: 1;
-    filter: blur(0.3px);
-  }
-
-  50% {
-    opacity: 0.45;
-    filter: blur(1px);
-  }
-
-  60% {
-    opacity: 0.92;
-    filter: blur(0.2px);
   }
 }

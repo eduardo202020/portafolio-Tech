@@ -31,7 +31,10 @@
         "id": 2,
         "title": "Tech Labs",
         "content": "Plataforma web de gestion tecnologica para inventario, prestamos de equipos y seguimiento operativo. Construida end-to-end con autenticacion por roles, backend integrado y despliegue productivo.",
-        "imgurl": "/extraImages/tech-lab.png",
+        "imgurl": "/projectSS/app-tech-lab.png",
+        "images": [
+          "/projectSS/app-tech-lab.png"
+        ],
         "githubLink": "https://github.com/eduardo202020/tech-lab",
         "deployedLink": "https://oti-test.jorgeparishuana.dev/",
         "tech": [
@@ -79,7 +82,12 @@
         "id": 4,
         "title": "El Gran Chef",
         "content": "Aplicacion mobile inspirada en el programa peruano El Gran Chef, con cerca de 400 recetas, navegacion por temporadas, filtros por dificultad y detalle paso a paso para cocinar desde el celular.",
-        "imgurl": "/extraImages/chef-1.jpg",
+        "imgurl": "/projectSS/app-food-1.jpg",
+        "images": [
+          "/projectSS/app-food-1.jpg",
+          "/projectSS/app-food-2.jpg",
+          "/projectSS/app-food-3.jpg"
+        ],
         "githubLink": "https://github.com/eduardo202020/food_app_v2.git",
         "deployedLink": "https://www.youtube.com/shorts/xFym0y1Ne6s",
         "tech": [
@@ -100,8 +108,13 @@
       {
         "id": 5,
         "title": "MuseIQ",
-        "content": "Sistema mobile + IoT para escaneo BLE en tiempo real, estimacion de proximidad por RSSI y visualizacion interactiva por zonas. Incluye guia hablada y ajuste de parametros para mejorar estabilidad.",
-        "imgurl": "/extraImages/museIQ.png",
+        "content": "App mobile para recorridos de museo con beacons BLE, reconocimiento de sala, escaneo QR, voz y chat contextual. Integra un backend FastAPI con RAG local y Chroma para responder según el museo, la sala y la obra activa.",
+        "imgurl": "/projectSS/app-muse-1.jpg",
+        "images": [
+          "/projectSS/app-muse-1.jpg",
+          "/projectSS/app-muse-2.jpg",
+          "/projectSS/app-muse-3.jpg"
+        ],
         "githubLink": "https://github.com/eduardo202020/iot",
         "deployedLink": "https://github.com/eduardo202020/iot",
         "tech": [
@@ -112,13 +125,35 @@
             "tech": "/skillsLogos/react.png"
           },
           {
-            "tech": "/skillsLogos/js.png"
+            "tech": "/skillsLogos/fastapi.svg"
           },
           {
-            "tech": "/skillsLogos/github.png"
+            "tech": "/skillsLogos/langchain.svg"
           },
           {
-            "tech": "/skillsLogos/linux.png"
+            "tech": "/skillsLogos/bluetooth.svg"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "title": "Papeleta Clara",
+        "content": "Aplicacion mobile para consultar, interpretar y dar seguimiento a papeletas de transito. Organiza fechas y descuentos, permite orientacion por voz y ayuda a revisar la evidencia antes de pagar o presentar un descargo.",
+        "imgurl": "/projectSS/app-sat-1.jpg",
+        "images": [
+          "/projectSS/app-sat-1.jpg",
+          "/projectSS/app-sat-2.jpg",
+          "/projectSS/app-sat-3.jpg"
+        ],
+        "tech": [
+          {
+            "tech": "/skillsLogos/react.png"
+          },
+          {
+            "tech": "/skillsLogos/typescript.png"
+          },
+          {
+            "tech": "/skillsLogos/node.png"
           }
         ]
       }
