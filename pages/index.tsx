@@ -73,7 +73,7 @@ const certifications = [
     dateTime: "2026-07",
     description:
       "Se otorga la presente constancia por haber obtenido el 1.º lugar en la Hackatón Nacional Transformagob 2026, al presentar la propuesta de solución más destacada frente a un desafío de innovación digital, con impacto en la resolución de problemáticas reales de entidades públicas en beneficio de la ciudadanía, en el marco de los Objetivos Prioritarios 3 (servicios digitales centrados en las personas), 4 (talento digital para todas las personas) y 6 (innovación digital) de la Política Nacional de Transformación Digital.",
-    preview: "/certificados/preview-transformagob-2026.png",
+    preview: "/certificados/preview-transformagob-2026.jpg",
     document: "/certificados/certifficacdo-pcm.pdf",
     note: "Constancia oficial firmada digitalmente",
     featured: true,
